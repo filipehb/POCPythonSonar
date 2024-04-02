@@ -20,6 +20,11 @@ jobs:
         uses: snok/install-poetry@v1
       - name: Install dependencies
         run: poetry install
+      - name: Generate Coverage
+        run: |
+          coverage run -m pytest .
+          coverage report -m
+          coverage xml
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
