@@ -23,6 +23,10 @@ jobs:
           python -m coverage run -m pytest .
           python -m coverage report -m
           python -m coverage xml
+      - name: Fix coverage path
+        run: |
+          pwd
+          sed -i "s/<source>\/home\/runner\/work\/POCPythonSonar\/POCPythonSonar<\/source>/<source>\/github\/workspace<\/source>/g" coverage.xml
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
