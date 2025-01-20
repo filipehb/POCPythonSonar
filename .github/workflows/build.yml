@@ -18,6 +18,9 @@ jobs:
           python-version: '3.11'
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: Execute script
+        run: |
+          python main.py
       - name: Generate Coverage
         run: |
           python -m coverage run -m pytest .
